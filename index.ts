@@ -6,46 +6,11 @@ interface ColumnFlags {
   noSort?: boolean;
   locked?: boolean;
 }
-const enum SemanticCategory {
-  Min = 0,
-  Generic = 0,
-  PersonFullName = 1,
-  Person1stName = 2,
-  PersonMiddleName = 3,
-  PersonSurname = 4,
-  PersonTitle = 5,
-  MilitaryRank = 6,
-  OccupationPosition = 7,
-  GenericPersonAttribute = 8,
-  FullPostalAddress = 9,
-  ZipCode = 10,
-  CountryCitizenship = 11,
-  StateProvinceRegion = 12,
-  City = 13,
-  StreetAddress = 14,
-  Email = 15,
-  TelephoneNumber = 16,
-  SocialSecurityNumber = 17,
-  DateofBirth = 18,
-  Age = 19,
-  EmployerName = 20,
-  EmploymentAddress = 21,
-  CustomerID = 22,
-  ProductID = 23,
-  OrganizationFullName = 24,
-  OrganizationAbbreviation = 25,
-  OrganizationOwnershipType = 26,
-  CurrencyCode = 27,
-  CurrencyAmount = 28,
-  EventDate = 29,
-  URL = 30,
-  Max = 30
-}
 export interface ColumnInfo {
   id: number;
   title: string;
   type: string;
-  semanticCategory: SemanticCategory;
+  semanticCategory: string;
   flags: ColumnFlags;
 }
 interface WrapperFlags {
@@ -79,21 +44,19 @@ export interface DistinctParams {
   columnId: number;
   sortByCount?: boolean;
 }
-export const enum BasicStatAggregationType {
-  NDEFINED = "NDEFINED",
-  MINIMUM = "MINIMUM",
-  MAXIMUM = "MAXIMUM",
-  RANGE = "RANGE",
-  MEAN = "MEAN",
-  STD_DEVIATION = "STD_DEVIATION",
-  MEDIAN = "MEDIAN",
-  DIFF_VALUES = "DIFF_VALUES",
-  MODE = "MODE",
-  MODE_COUNT = "MODE_COUNT",
-  SUM = "SUM",
-  TIME_MIN = "TIME_MIN",
-  TIME_MAX = "TIME_MAX"
-}
+export type BasicStatAggregationType = 'NDEFINED' |
+  'MINIMUM' |
+  'MAXIMUM' |
+  'RANGE' |
+  'MEAN' |
+  'STD_DEVIATION' |
+  'MEDIAN' |
+  'DIFF_VALUES' |
+  'MODE' |
+  'MODE_COUNT' |
+  'SUM' | 
+  'TIME_MIN' |
+  'TIME_MAX';
 export interface BasicStatAggregation {
   value: Value;
   type: BasicStatAggregationType;
