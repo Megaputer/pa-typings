@@ -1,0 +1,15 @@
+{
+  "name": "pa-typings",
+  "version": "1.0.0",
+  "description": "This package contains type definitions for PolyAnalyst 6.5 REST API",
+  "types": "index.ts",
+  "scripts": {
+    "eslint": "node node_modules/eslint/bin/eslint ./ --ext .ts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.39.0",
+    "@typescript-eslint/parser": "5.39.0",
+    "eslint": "8.24.0",
+    "typescript": "4.8.4"
+  }
+}
