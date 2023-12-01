@@ -139,6 +139,12 @@ export interface SearchResponse {
   foundPosition: number;
 }
 
+export interface BinaryContentParams {
+  wrapperGuid: string;
+  key: string;
+  fileName?: string;
+}
+
 export interface ApiRequestor {
   wrapperGuid(): Promise<WrapperGuid>;
   info(params: WrapperGuid): Promise<DatasetInfo>;
@@ -149,6 +155,7 @@ export interface ApiRequestor {
   search(params: SearchParams): Promise<SearchResponse>;
   values(params: GetValuesParams): Promise<Table>;
   distinct(params: DistinctParams): ApiRequestor;
+  getBinaryContent(params: BinaryContentParams): Promise<string>;
 }
 
 export interface TConditionNode {
