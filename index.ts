@@ -199,3 +199,43 @@ export const enum TColumnOperation {
   co_OR,
   co_term
 }
+
+export type FormValueBasic = string | number | boolean;
+export type FormValue = FormValueBasic | FormValueBasic[] | undefined;
+interface IFormComponent {
+  getValue(): FormValue;
+  setValue(val: FormValueBasic[]): Promise<void> | void;
+  reset(): void;
+}
+
+export interface IWidget {
+  dispose(): void;
+  onUpdateAppearance(): void;
+  render(parent: HTMLElement): void;
+  updateData(requestor: ApiRequestor): void;
+  hasSelection?(): boolean;
+  selectByDDExpression?(cond?: TConditionNode, isUserCond?: boolean): void;
+  getFormHandler?(): IFormComponent;
+}
+
+export interface WidgetArgs {
+  isEditor: boolean;
+  setAppearance(appr: Record<string, any>): void;
+  getApprValue(key: string): ApprValue | undefined;
+  openDrillDown(condition: TConditionNode, optional?: { navigate?: boolean }): void;
+}
+
+export type ApprValue = string | number;
+interface ApprCtrl {
+  apprKey: string;
+  label: string;
+  defaultValue?: ApprValue;
+  type: string;
+  props?: Record<string, any>;
+}
+
+export interface ApprTab {
+  label: string;
+  icon?: string;
+  items: ApprCtrl[];
+}
