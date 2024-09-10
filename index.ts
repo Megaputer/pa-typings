@@ -78,7 +78,7 @@ export interface SortParams {
   wrapperGuid: string;
   columns: ColumnSortParams[];
 }
-const enum FilterAction {
+export const enum FilterAction {
   EQUAL = 0,
   NOT_EQUAL = 1,
   LESS = 2,
@@ -103,7 +103,7 @@ export interface FilterParams {
   usePDL: boolean;
   delta?: number;
 }
-const enum SearchMethod {
+export const enum SearchMethod {
   SIMPLE = 0,
   WHOLE_WORD = 1,
   WHOLE_TEXT = 2,
