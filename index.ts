@@ -219,11 +219,26 @@ export interface IWidget {
   updateApprSchema?(schema: ApprTab[]): Promise<ApprTab[]>
 }
 
+export interface GeoPoint {
+  latitude: number;
+  longitude: number;
+  elevation: number;
+}
+
+export interface ExternalWidgetFormatter {
+  formatValue(colName: string, value?: number | string | GeoPoint): string;
+}
+
 export interface WidgetArgs {
   isEditor: boolean;
+  serverType: string;
   setAppearance(appr: Record<string, any>): void;
   getApprValue(key: string): ApprValue | undefined;
   openDrillDown(condition: TConditionNode, optional?: { navigate?: boolean }): void;
+  getFormatter(): Promise<ExternalWidgetFormatter>;
+  getEddColumns: () => string[];
+  getUrlStatics: (filename: string) => string | undefined;
+  hasBeenFiltered(): boolean;
 }
 
 export type ApprValue = string | number;
@@ -232,6 +247,9 @@ export interface ApprCtrl {
   label: string;
   defaultValue?: ApprValue;
   type: string;
+  description?: string;
+  min?: number;
+  max?: number;
   props?: Record<string, any>;
   hidden?: boolean | (() => boolean);
 }
