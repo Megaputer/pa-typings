@@ -227,6 +227,7 @@ export interface GeoPoint {
 
 export interface ExternalWidgetFormatter {
   formatValue(colName: string, value?: number | string | GeoPoint): string;
+  getColumnsDesc(colsName: string[]): Promise<{ column: string; desc: string }[]>;
 }
 
 export interface WidgetArgs {
