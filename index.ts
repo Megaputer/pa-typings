@@ -33,7 +33,7 @@ export interface GetValuesParams {
   rowIDsOnly?: boolean;
   textLength?: number;
 }
-export type Value = number | string;
+export type Value = number | string | GeoPoint;
 export interface Table {
   rowIDs: string[];
   table?: Value[][];
